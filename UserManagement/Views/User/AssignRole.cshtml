@@ -1,0 +1,49 @@
+﻿@model UserManagement.Models.ViewModel.UserRoleModel
+
+@{
+    ViewBag.Title = "AssignRole";
+}
+
+<h2>AssignRole</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>UserRole</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.UserId, new System.Web.Mvc.SelectList(ViewBag.users, "UserId", "Profile.FirstName"), "--Select User--")
+                @Html.ValidationMessageFor(model => model.UserId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoleId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.RoleId, new System.Web.Mvc.SelectList(ViewBag.roles, "RoleId", "RoleName"), "--Select Role--")
+                @Html.ValidationMessageFor(model => model.RoleId)
+            </div>
+        </div>        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Role" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

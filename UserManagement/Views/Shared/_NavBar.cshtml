@@ -1,0 +1,34 @@
+﻿
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse ">
+            <ul class="nav navbar-nav navbar-right style=" font-weight:bold;">
+                <li class="dropdown" style="color:white; font-family:Calibri; background-color:#008B9A;">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span style="font-size:20px">Admin</span><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Assign Role", "AssignRole", "User", null, new { @class = "navbar-brand", @style = "color:white; font-family:Calibri; background-color:#008B9A" })</li>
+                            <li>@Html.ActionLink("Assign Permission", "Login", "User", null, new { @class = "navbar-brand", @style = "color:white; font-family:Calibri; background-color:#008B9A" })</li>
+                            <li>@Html.ActionLink("Assign Role to Permission", "AssignPermissionToRole", "Role", null, new { @class = "navbar-brand ", @style = "color:white; font-family:Calibri; background-color:#008B9A" })</li>
+                            <li>@Html.ActionLink("Create User", "CreateUser", "User", null, new { @class = "navbar-brand ", @style = "color:white; font-family:Calibri; background-color:#008B9A" })</li>
+                            <li>@Html.ActionLink("Create Role", "CreateRole", "User", null, new { @class = "navbar-brand ", @style = "color:white; font-family:Calibri; background-color:#008B9A" })</li>
+                            <li>@Html.ActionLink("Create Permission", "CreatePermission", "User", null, new { @class = "navbar-brand ", @style = "color:white; font-family:Calibri; background-color:#008B9A" })</li>
+                        </ul>
+                    }
+                </li>
+                @*<li>@Html.ActionLink("SignUp", "SignUp", "User", null, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("Login", "Login", "User", null, new { @class = "navbar-brand" })</li>*@
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>
